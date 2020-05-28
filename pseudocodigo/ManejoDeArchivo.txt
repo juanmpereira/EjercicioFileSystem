@@ -1,0 +1,33 @@
+Interface ManejoDeArchivo{
+	Buffer buffer;
+	Int fd;
+	private fileSystem;
+
+	ManejoDeArchivo(fileSystem) { 
+				this.fileSystem = fileSystem;
+				}
+
+	abrirArchivo(String path){ fd = fileSystem.openFile(path);}
+
+	cerrarArchivo(){ 
+		validarNoEsNull(fd);
+		fileSystem.closeFile(fd);
+		}	
+
+	lecturaSincronizada(){
+		validarNoEsNull(fd);
+		int leido = fileSystem.syncReadFile(fd,buffer.obtenerBytes(),buffer.obtenerComienzo(),buffer.obtenerFinal());
+		if (leido != esperado)
+		throw Exception("error, la lectura no fue la esperada");
+		}
+
+	escrituraSincronizada(){
+		fileSystem.voisyncWriteFile(fd, buffer.obtenerBytes(),buffer.obtenerComienzo(), buffer.obtenerFinal() );
+			
+		}
+	
+	lecturaAsincroniconica(continuacion){
+		fileSystem.asyncReadFile(ifd,buffer.obtenerBytes(),buffer.obtenerComienzo(), buffer.obtenerFinal(), continuacion);
+		}
+	
+}
