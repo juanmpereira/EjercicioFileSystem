@@ -16,14 +16,14 @@ Interface ManejoDeArchivo{
 
 	lecturaSincronizada(){
 		validarNoEsNull(fd);
-		int leido = fileSystem.syncReadFile(fd,buffer.obtenerBytes(),buffer.obtenerComienzo(),buffer.obtenerFinal());
-		if (leido != esperado)
+		int cantleido = fileSystem.syncReadFile(fd,buffer.obtenerBytes(),buffer.obtenerComienzo(),buffer.obtenerFinal());
+		int esperado = buffer.obtenerBytes???
+		if (cantleido != esperado)
 		throw Exception("error, la lectura no fue la esperada");
 		}
 
 	escrituraSincronizada(){
-		fileSystem.voisyncWriteFile(fd, buffer.obtenerBytes(),buffer.obtenerComienzo(), buffer.obtenerFinal() );
-			
+		fileSystem.voisyncWriteFile(fd, buffer.obtenerBytes(),buffer.obtenerComienzo(), buffer.obtenerFinal() );	
 		}
 	
 	lecturaAsincroniconica(continuacion){
