@@ -1,33 +1,47 @@
-Interface ManejoDeArchivo{
+public class ManejoDeArchivo{
 	Buffer buffer;
-	Int fd;
-	private fileSystem;
+	FileSystem fs;
 
 	ManejoDeArchivo(fileSystem) { 
-				this.fileSystem = fileSystem;
-				}
+				this.fs = fileSystem;
+	}
 
-	abrirArchivo(String path){ fd = fileSystem.openFile(path);}
+	ArchivAbierto abrirArchivo(String path){ 
+	return new archivoAbierto(fs.openFile(path),fs}
+	}
 
-	cerrarArchivo(){ 
-		validarNoEsNull(fd);
-		fileSystem.closeFile(fd);
-		}	
+public class ArchivoAbierto{
+	int df;
+	LowLevelFyleSystem fs;
 
-	lecturaSincronizada(){
-		validarNoEsNull(fd);
-		int cantleido = fileSystem.syncReadFile(fd,buffer.obtenerBytes(),buffer.obtenerComienzo(),buffer.obtenerFinal());
+	public void ArchivoAbierto(int fd,FyleSystem fs){
+	this fd = fd;
+	this fs=fs;
+	}
+
+	void cerrarArchivo(){
+		fs.closeFile(fd);
+	}	
+
+	void lecturaSincronizada(Buffer buffer){
+		int cantleido = fs.syncReadFile(fd,buffer.obtenerBytes(),buffer.obtenerComienzo(),buffer.obtenerFinal());
 		int esperado = buffer.obtenerBytes???
 		if (cantleido != esperado)
 		throw Exception("error, la lectura no fue la esperada");
-		}
+	}
 
-	escrituraSincronizada(){
-		fileSystem.voisyncWriteFile(fd, buffer.obtenerBytes(),buffer.obtenerComienzo(), buffer.obtenerFinal() );	
+	void escrituraSincronizada(Buffer buffer){
+		fs.voisyncWriteFile(fd, buffer.obtenerBytes(),buffer.obtenerComienzo(), buffer.obtenerFinal() );	
+	}
+	
+	lecturaAsincroniconica(Buffer buffer,continuacion){
+		fs.asyncReadFile(fd,buffer.obtenerBytes(),buffer.obtenerComienzo(), buffer.obtenerFinal(), continuacion);
 		}
 	
-	lecturaAsincroniconica(continuacion){
-		fileSystem.asyncReadFile(ifd,buffer.obtenerBytes(),buffer.obtenerComienzo(), buffer.obtenerFinal(), continuacion);
-		}
-	
+}
+
+public class Buffer {
+	byte[] bufferBytes;
+	int bufferStart;
+	int bufferEnd;
 }
