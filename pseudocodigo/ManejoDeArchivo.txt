@@ -7,7 +7,11 @@ public class ManejoDeArchivo{
 	}
 
 	ArchivAbierto abrirArchivo(String path){ 
-	return new archivoAbierto(fs.openFile(path),fs}
+	int fd = fs.openFile(path);
+	if (fd < 0)  -- si devuelve negativo es por que no existia el archivo y lo hago fallar
+	trow Exception ("error al abrir)
+	else
+	return new archivoAbierto(fd,fs}
 	}
 
 public class ArchivoAbierto{

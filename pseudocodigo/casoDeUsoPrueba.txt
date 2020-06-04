@@ -1,0 +1,9 @@
+ ManejoDeArchivos highlevel = new ManejoDeArchivos(FileSystem fs)
+ ArchivoAbierto archivo = highlevel.openfile("./foo")
+
+co = new Buffer(byte(4),0,3)
+archivo.read(co);
+c1 = new Buffer(byte(5),0,4)
+archivo.read(c1)
+c2 = new Buffer(byte(1),0,0)
+archivo.read(c2)
