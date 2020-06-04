@@ -29,7 +29,7 @@ public class ArchivoAbierto{
 
 	void lecturaSincronizada(Buffer buffer){
 		int cantleido = fs.syncReadFile(fd,buffer.obtenerBytes(),buffer.obtenerComienzo(),buffer.obtenerFinal());
-		int esperado = buffer.obtenerBytes???
+		int esperado = buffer.final()
 		if (cantleido != esperado)
 		throw Exception("error, la lectura no fue la esperada");
 	}
